@@ -72,6 +72,16 @@ spec:
                   name: music-collector-oauth-secret
                   key: MC_OAUTH_GOOGLE_CLIENT_SECRET
                   optional: true
+            # A SEND-scoped mail-service key per environment, so revoking staging's cannot
+            # stop prod's reset mail. Optional for the same reason as the OAuth keys:
+            # without it reset links are logged rather than sent, which is a degraded
+            # feature, not a reason to refuse to start.
+            - name: MC_MAIL_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-mail-secret
+                  key: MC_MAIL_API_KEY
+                  optional: true
           startupProbe:
             httpGet:
               path: /actuator/health

@@ -5,3 +5,4 @@ resources:
   - music-collector-jwt-secret.yaml
   - music-collector-storage-secret.yaml
   - music-collector-oauth-secret.yaml
+  - music-collector-mail-secret.yaml
