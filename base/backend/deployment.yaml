@@ -56,6 +56,22 @@ spec:
                 secretKeyRef:
                   name: music-collector-storage-secret
                   key: MC_MINIO_SECRET_KEY
+            # One OAuth client per environment, so the staging redirect URI can never be
+            # registered against the prod client. Marked optional: a provider with blank
+            # credentials is simply not offered on the sign-in screen, so an environment
+            # without the secret still starts and still works — minus the Google button.
+            - name: MC_OAUTH_GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-oauth-secret
+                  key: MC_OAUTH_GOOGLE_CLIENT_ID
+                  optional: true
+            - name: MC_OAUTH_GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-oauth-secret
+                  key: MC_OAUTH_GOOGLE_CLIENT_SECRET
+                  optional: true
           startupProbe:
             httpGet:
               path: /actuator/health

@@ -4,3 +4,4 @@ resources:
   - music-collector-db-secret.yaml
   - music-collector-jwt-secret.yaml
   - music-collector-storage-secret.yaml
+  - music-collector-oauth-secret.yaml
