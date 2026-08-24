@@ -11,6 +11,6 @@ resources:
 # The values below are the bootstrap pins.
 images:
 - name: ghcr.io/janne6565/music-collector-backend
-  newTag: main-2407b23
+  newTag: main-ec157b7
 - name: ghcr.io/janne6565/music-collector-frontend
   newTag: main-2f58de4
