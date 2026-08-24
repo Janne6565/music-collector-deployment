@@ -82,6 +82,35 @@ spec:
                   name: music-collector-mail-secret
                   key: MC_MAIL_API_KEY
                   optional: true
+            # Apple needs four values, not two: it issues no static client secret, so
+            # AppleClientSecret signs a short-lived ES256 JWT per request from the .p8 key
+            # (MC_OAUTH_APPLE_KEY), keyed by MC_OAUTH_APPLE_KEY_ID, issued by the team and
+            # subject to the Services ID. Provider.configured() only checks the id and the
+            # key, so a missing team or key id fails at the token exchange, not at startup.
+            - name: MC_OAUTH_APPLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-oauth-secret
+                  key: MC_OAUTH_APPLE_CLIENT_ID
+                  optional: true
+            - name: MC_OAUTH_APPLE_TEAM_ID
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-oauth-secret
+                  key: MC_OAUTH_APPLE_TEAM_ID
+                  optional: true
+            - name: MC_OAUTH_APPLE_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-oauth-secret
+                  key: MC_OAUTH_APPLE_KEY_ID
+                  optional: true
+            - name: MC_OAUTH_APPLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-oauth-secret
+                  key: MC_OAUTH_APPLE_KEY
+                  optional: true
           startupProbe:
             httpGet:
               path: /actuator/health
