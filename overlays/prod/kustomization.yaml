@@ -15,4 +15,4 @@ images:
     newTag: main-d816c95
   - name: ghcr.io/janne6565/music-collector-frontend
     newName: ghcr.io/janne6565/music-collector-frontend
-    newTag: main-581cf82
+    newTag: main-db24a67
