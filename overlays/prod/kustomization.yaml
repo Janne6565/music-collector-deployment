@@ -2,17 +2,16 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namespace: music-collector-prod
 resources:
-  - ../../base
-  - ingress.yaml
-  - sealed-secrets
+- ../../base
+- ingress.yaml
+- sealed-secrets
 # CI (music-collector-backend / -frontend) rewrites these tags via
 # `kustomize edit set image` and pushes — ArgoCD then auto-syncs.
 # Cutting a vX.Y.Z tag in a product repo IS the prod deploy.
 # The values below are the bootstrap pins.
 images:
-  - name: ghcr.io/janne6565/music-collector-backend
-    newName: ghcr.io/janne6565/music-collector-backend
-    newTag: main-d816c95
-  - name: ghcr.io/janne6565/music-collector-frontend
-    newName: ghcr.io/janne6565/music-collector-frontend
-    newTag: main-db24a67
+- name: ghcr.io/janne6565/music-collector-backend
+  newTag: 0.1.0
+- name: ghcr.io/janne6565/music-collector-frontend
+  newName: ghcr.io/janne6565/music-collector-frontend
+  newTag: main-db24a67
