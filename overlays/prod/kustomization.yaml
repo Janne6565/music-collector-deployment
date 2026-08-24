@@ -10,13 +10,13 @@ resources:
 # Cutting a vX.Y.Z tag in a product repo IS the prod deploy.
 # The values below are the bootstrap pins.
 # Per-environment bucket, so staging can never write into the prod one.
+  # The app's own origin. OAuth redirect URIs are built from it and must match what
+  # the provider has registered, and password-reset links point at it — the
+  # application.yml default is localhost, which would silently break both.
 configMapGenerator:
 - behavior: merge
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-prod
-  # The app's own origin. OAuth redirect URIs are built from it and must match what
-  # the provider has registered, and password-reset links point at it — the
-  # application.yml default is localhost, which would silently break both.
   - MC_PUBLIC_URL=https://music.jannekeipert.de
   name: music-collector-backend-config
 
@@ -26,6 +26,6 @@ generatorOptions:
 
 images:
 - name: ghcr.io/janne6565/music-collector-backend
-  newTag: 0.3.1
+  newTag: 0.4.0
 - name: ghcr.io/janne6565/music-collector-frontend
   newTag: 0.3.1
