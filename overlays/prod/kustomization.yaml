@@ -11,17 +11,17 @@ resources:
 # The values below are the bootstrap pins.
 # Per-environment bucket, so staging can never write into the prod one.
 configMapGenerator:
-  - name: music-collector-backend-config
-    behavior: merge
-    literals:
-      - MC_MINIO_BUCKET=music-collector-photos-prod
+- behavior: merge
+  literals:
+  - MC_MINIO_BUCKET=music-collector-photos-prod
+  name: music-collector-backend-config
 
-generatorOptions:
   # The deployment references the config map by its plain name.
+generatorOptions:
   disableNameSuffixHash: true
 
 images:
 - name: ghcr.io/janne6565/music-collector-backend
   newTag: 0.1.1
 - name: ghcr.io/janne6565/music-collector-frontend
-  newTag: 0.1.1
+  newTag: 0.2.0
