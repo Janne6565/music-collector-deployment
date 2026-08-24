@@ -44,6 +44,18 @@ spec:
                 secretKeyRef:
                   name: music-collector-jwt-secret
                   key: MC_JWT_SECRET
+            # Scoped to this environment's photo bucket only — the staging credentials
+            # are refused on the prod bucket and vice versa.
+            - name: MC_MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-storage-secret
+                  key: MC_MINIO_ACCESS_KEY
+            - name: MC_MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-storage-secret
+                  key: MC_MINIO_SECRET_KEY
           startupProbe:
             httpGet:
               path: /actuator/health

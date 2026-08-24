@@ -8,6 +8,10 @@ data:
   # Cap the JVM heap — the cluster runs on a single memory-scarce node.
   JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=75"
   MC_DB_URL: jdbc:postgresql://postgres:5432/musiccollector
+  # The shared cluster MinIO, rather than a StatefulSet per environment: photos are the
+  # only object storage this app needs, and two more stateful workloads on a single node
+  # is a poor trade for the isolation. The credentials are scoped to this bucket alone.
+  MC_MINIO_ENDPOINT: http://minio.minio.svc.cluster.local:9000
   MC_DB_USER: musiccollector
   LOGGING_LEVEL_COM_MUSICCOLLECTOR: INFO
   # MusicBrainz requires a descriptive, contactable User-Agent. Anonymous callers hit this

@@ -9,6 +9,17 @@ resources:
 # `kustomize edit set image` and pushes — ArgoCD then auto-syncs.
 # Cutting a vX.Y.Z tag in a product repo IS the prod deploy.
 # The values below are the bootstrap pins.
+# Per-environment bucket, so staging can never write into the prod one.
+configMapGenerator:
+  - name: music-collector-backend-config
+    behavior: merge
+    literals:
+      - MC_MINIO_BUCKET=music-collector-photos-prod
+
+generatorOptions:
+  # The deployment references the config map by its plain name.
+  disableNameSuffixHash: true
+
 images:
 - name: ghcr.io/janne6565/music-collector-backend
   newTag: 0.1.1

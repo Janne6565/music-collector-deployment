@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - music-collector-db-secret.yaml
   - music-collector-jwt-secret.yaml
+  - music-collector-storage-secret.yaml
