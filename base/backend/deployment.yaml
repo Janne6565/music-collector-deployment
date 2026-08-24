@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  annotations:
+    # Roll the pods automatically when the config map or sealed secrets change.
+    reloader.stakater.com/auto: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: backend
+          image: ghcr.io/janne6565/music-collector-backend:placeholder
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: music-collector-backend-config
+          env:
+            # Same password as Postgres — one shared sealed secret.
+            - name: MC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-db-secret
+                  key: POSTGRES_PASSWORD
+            # No fallback in application.yml: the app fails to start rather than run
+            # on a known signing key.
+            - name: MC_JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-jwt-secret
+                  key: MC_JWT_SECRET
+          startupProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+            periodSeconds: 5
+            # Flyway migrations run at startup — allow up to ~2.5 min before failing.
+            failureThreshold: 30
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            failureThreshold: 3
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "1000m"
+              memory: "768Mi"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          volumeMounts:
+            # Writable /tmp on a read-only root FS (Tomcat work dir, java.io.tmpdir).
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}

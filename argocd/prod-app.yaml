@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: music-collector-prod
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: music-collector
+  source:
+    repoURL: https://github.com/Janne6565/music-collector-deployment
+    targetRevision: main
+    path: overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: music-collector-prod
+  syncPolicy:
+    # Fully automated: any commit to main (a CI tag bump or a manual manifest edit)
+    # is reconciled onto the cluster with no manual step.
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

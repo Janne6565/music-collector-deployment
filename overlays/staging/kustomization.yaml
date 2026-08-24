@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: music-collector-staging
+resources:
+  - ../../base
+  - ingress.yaml
+  - sealed-secrets
+# CI (music-collector-backend / -frontend) rewrites these tags via
+# `kustomize edit set image` and pushes — ArgoCD then auto-syncs.
+# Merging to main in a product repo IS the staging deploy.
+# The values below are the bootstrap pins.
+images:
+  - name: ghcr.io/janne6565/music-collector-backend
+    newName: ghcr.io/janne6565/music-collector-backend
+    newTag: placeholder
+  - name: ghcr.io/janne6565/music-collector-frontend
+    newName: ghcr.io/janne6565/music-collector-frontend
+    newTag: placeholder

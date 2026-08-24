@@ -1,0 +1,35 @@
+# Single host, one Ingress. Traefik routes by longest prefix: /api hits the backend,
+# everything else the web app (same origin, so the browser never sees CORS).
+# TLS is issued per host by cert-manager rather than sharing the multi-domain cert.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: music-collector-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - music.jannekeipert.de
+      secretName: music-collector-tls
+  rules:
+    - host: music.jannekeipert.de
+      http:
+        paths:
+          # API first — the backend serves everything under /api/v1/...
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: backend
+                port:
+                  number: 8080
+          # Everything else is the web app.
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80

@@ -1,0 +1,15 @@
+# Non-secret backend config. Environment-specific values (public base URL) are patched
+# in the overlay; secrets live in the sealed secrets instead.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: music-collector-backend-config
+data:
+  # Cap the JVM heap — the cluster runs on a single memory-scarce node.
+  JAVA_TOOL_OPTIONS: "-XX:MaxRAMPercentage=75"
+  MC_DB_URL: jdbc:postgresql://postgres:5432/musiccollector
+  MC_DB_USER: musiccollector
+  LOGGING_LEVEL_COM_MUSICCOLLECTOR: INFO
+  # MusicBrainz requires a descriptive, contactable User-Agent. Anonymous callers hit this
+  # proxy, so identify the deployment rather than the end user.
+  MC_MUSICBRAINZ_USER_AGENT: "MusicCollector/0.1 (https://github.com/Janne6565/music-collector-backend)"
