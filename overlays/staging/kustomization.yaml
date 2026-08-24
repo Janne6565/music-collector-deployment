@@ -10,13 +10,13 @@ resources:
 # Merging to main in a product repo IS the staging deploy.
 # The values below are the bootstrap pins.
 # Per-environment bucket, so staging can never write into the prod one.
+  # The app's own origin. OAuth redirect URIs are built from it and must match what
+  # the provider has registered, and password-reset links point at it — the
+  # application.yml default is localhost, which would silently break both.
 configMapGenerator:
 - behavior: merge
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-staging
-  # The app's own origin. OAuth redirect URIs are built from it and must match what
-  # the provider has registered, and password-reset links point at it — the
-  # application.yml default is localhost, which would silently break both.
   - MC_PUBLIC_URL=https://music-staging.jannekeipert.de
   name: music-collector-backend-config
 
@@ -26,6 +26,6 @@ generatorOptions:
 
 images:
 - name: ghcr.io/janne6565/music-collector-backend
-  newTag: main-0d61bec
+  newTag: main-8081de0
 - name: ghcr.io/janne6565/music-collector-frontend
   newTag: main-653707e
