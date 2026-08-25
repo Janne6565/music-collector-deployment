@@ -6,3 +6,4 @@ resources:
   - music-collector-storage-secret.yaml
   - music-collector-oauth-secret.yaml
   - music-collector-mail-secret.yaml
+  - music-collector-discogs-secret.yaml

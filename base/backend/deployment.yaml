@@ -72,6 +72,22 @@ spec:
                   name: music-collector-oauth-secret
                   key: MC_OAUTH_GOOGLE_CLIENT_SECRET
                   optional: true
+            # Discogs is where the physical pressings are — MusicBrainz has none of the
+            # four vinyl editions of Fred again..'s "ten days", for instance. Optional, and
+            # the app starts without it: anonymous callers still get results, just at 25
+            # requests a minute instead of 60 and with every cover image blank. A degraded
+            # source, not a reason to refuse to start.
+            - name: MC_DISCOGS_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: music-collector-discogs-secret
+                  key: MC_DISCOGS_TOKEN
+                  optional: true
+            # Raised from the anonymous 25 only because a token is present; the client
+            # paces itself to whatever this says, and Discogs answers 429 rather than
+            # queueing, so overstating it turns a slow search into a failed one.
+            - name: MC_DISCOGS_REQUESTS_PER_MINUTE
+              value: "60"
             # A SEND-scoped mail-service key per environment, so revoking staging's cannot
             # stop prod's reset mail. Optional for the same reason as the OAuth keys:
             # without it reset links are logged rather than sent, which is a degraded
