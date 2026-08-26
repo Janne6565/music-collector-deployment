@@ -28,4 +28,4 @@ images:
 - name: ghcr.io/janne6565/music-collector-backend
   newTag: main-9a77a12
 - name: ghcr.io/janne6565/music-collector-frontend
-  newTag: main-e9a97fa
+  newTag: main-6858eba
