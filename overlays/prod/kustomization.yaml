@@ -17,7 +17,7 @@ configMapGenerator:
 - behavior: merge
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-prod
-  - MC_PUBLIC_URL=https://music.jannekeipert.de
+  - MC_PUBLIC_URL=https://rekordo.jannekeipert.de
   name: music-collector-backend-config
 
   # The deployment references the config map by its plain name.
