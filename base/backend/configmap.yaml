@@ -13,7 +13,7 @@ data:
   # is a poor trade for the isolation. The credentials are scoped to this bucket alone.
   MC_MINIO_ENDPOINT: http://minio.minio.svc.cluster.local:9000
   MC_DB_USER: musiccollector
-  LOGGING_LEVEL_COM_MUSICCOLLECTOR: INFO
+  LOGGING_LEVEL_COM_REKORDO: INFO
   # MusicBrainz requires a descriptive, contactable User-Agent. Anonymous callers hit this
   # proxy, so identify the deployment rather than the end user.
-  MC_MUSICBRAINZ_USER_AGENT: "MusicCollector/0.1 (https://github.com/Janne6565/music-collector-backend)"
+  MC_MUSICBRAINZ_USER_AGENT: "Rekordo/0.1 (https://github.com/Janne6565/music-collector-backend)"
