@@ -26,6 +26,6 @@ generatorOptions:
 
 images:
 - name: ghcr.io/janne6565/music-collector-backend
-  newTag: main-af5456d
+  newTag: main-71c4f61
 - name: ghcr.io/janne6565/music-collector-frontend
   newTag: main-e891655
