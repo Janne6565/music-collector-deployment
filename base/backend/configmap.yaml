@@ -16,4 +16,4 @@ data:
   LOGGING_LEVEL_COM_REKORDO: INFO
   # MusicBrainz requires a descriptive, contactable User-Agent. Anonymous callers hit this
   # proxy, so identify the deployment rather than the end user.
-  MC_MUSICBRAINZ_USER_AGENT: "Rekordo/0.1 (https://github.com/Janne6565/music-collector-backend)"
+  MC_MUSICBRAINZ_USER_AGENT: "Rekordo/0.1 (https://github.com/Janne6565/rekordo-backend)"

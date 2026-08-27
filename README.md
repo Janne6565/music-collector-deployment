@@ -1,6 +1,6 @@
-# music-collector-deployment
+# rekordo-deployment
 
-Kustomize manifests for **Music Collector**. ArgoCD watches this repo; nothing here is ever
+Kustomize manifests for **Rekordo**. ArgoCD watches this repo; nothing here is ever
 `kubectl apply`-ed by hand.
 
 ## Layout
@@ -8,8 +8,8 @@ Kustomize manifests for **Music Collector**. ArgoCD watches this repo; nothing h
 ```
 base/            backend, frontend, postgres — environment-invariant
 overlays/
-  staging/       namespace music-collector-staging · music-staging.jannekeipert.de
-  prod/          namespace music-collector-prod    · music.jannekeipert.de
+  staging/       namespace music-collector-staging · rekordo-staging.jannekeipert.de
+  prod/          namespace music-collector-prod    · rekordo.jannekeipert.de
 argocd/          the two Applications (registered from cluster-deployment)
 ```
 
@@ -41,6 +41,16 @@ kubectl create secret generic <name> -n <namespace> --dry-run=client \
 | kubeseal --controller-namespace kube-system --controller-name sealed-secrets-controller \
     --format yaml > overlays/<env>/sealed-secrets/<name>.yaml
 ```
+
+## Names the rename deliberately left alone
+
+The app was renamed from Music Collector to Rekordo. The namespaces, the Postgres
+database and user, the photo buckets, the `MC_*` environment prefix and the Kubernetes
+resource names below still carry the old name, and that is the decision rather than an
+oversight: none of them is visible to a user, and moving them would cost a PVC migration,
+a re-seal of every sealed secret (they are scoped to name *and* namespace) and a bucket
+copy. The old hosts are still served alongside the new ones until a mobile build that
+points at `rekordo.` has shipped -- iOS 1.6.0 has the old host compiled in.
 
 ## DNS
 

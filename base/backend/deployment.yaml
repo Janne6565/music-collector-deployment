@@ -23,7 +23,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: backend
-          image: ghcr.io/janne6565/music-collector-backend:placeholder
+          image: ghcr.io/janne6565/rekordo-backend:placeholder
           ports:
             - name: http
               containerPort: 8080

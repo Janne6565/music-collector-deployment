@@ -25,10 +25,6 @@ generatorOptions:
   disableNameSuffixHash: true
 
 images:
-- name: ghcr.io/janne6565/music-collector-backend
-  newTag: main-71c4f61
-- name: ghcr.io/janne6565/music-collector-frontend
-  newTag: main-e891655
 - name: ghcr.io/janne6565/rekordo-backend
   newTag: main-81f61da
 - name: ghcr.io/janne6565/rekordo-frontend
