@@ -29,3 +29,5 @@ images:
   newTag: 0.12.0
 - name: ghcr.io/janne6565/music-collector-frontend
   newTag: 0.14.0
+- name: ghcr.io/janne6565/rekordo-frontend
+  newTag: 0.15.0
