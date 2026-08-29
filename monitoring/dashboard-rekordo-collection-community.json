@@ -181,6 +181,42 @@
         "w": 6,
         "x": 6,
         "y": 21
+      },
+      {
+        "h": 3,
+        "i": "21",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 0,
+        "y": 26
+      },
+      {
+        "h": 3,
+        "i": "22",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 2,
+        "y": 26
+      },
+      {
+        "h": 5,
+        "i": "23",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 29
+      },
+      {
+        "h": 5,
+        "i": "24",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 29
       }
     ],
     "panelMap": {},
@@ -188,7 +224,7 @@
       "rekordo",
       "product"
     ],
-    "title": "Rekordo \u2014 Collection & Community",
+    "title": "Rekordo — Collection & Community",
     "variables": {
       "env": {
         "customValue": "prod,staging",
@@ -1243,6 +1279,206 @@
         "timePreferance": "GLOBAL_TIME",
         "title": "Devices registered for push",
         "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Bytes in the bucket right now, everything included.",
+        "fillSpans": false,
+        "id": "21",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "e7f5cd27-da63-5bab-8133-d22cc4ed07dc",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "sum(max by (kind) ({__name__=\"rekordo.storage.bytes\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})) or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Image storage",
+        "yAxisUnit": "bytes"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Bytes in the bucket that no live photo row claims. Deletes are best effort, so this is what they left behind. Should sit at zero.",
+        "fillSpans": false,
+        "id": "22",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "2f2eefd3-77ab-501c-ab1e-56963c6c43b2",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.storage.orphan.bytes\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}) or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Orphaned bytes",
+        "yAxisUnit": "bytes"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "What the pictures cost, split by which picture it is: sleeve photos against profile pictures. Measured by walking the bucket, so it is what is actually paid for rather than what the database meant to store. Cover art is never stored and never appears here.",
+        "fillSpans": false,
+        "id": "23",
+        "isStacked": true,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "09ab5487-c744-51d9-a336-66c334a6cfbd",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{kind}}",
+              "name": "A",
+              "query": "max by (kind) ({__name__=\"rekordo.storage.bytes\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Storage by image kind",
+        "yAxisUnit": "bytes"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "How many objects each kind holds, which is what makes an average picture size readable next to the graph.",
+        "fillSpans": false,
+        "id": "24",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "d6c37361-6864-5177-bebe-9a0ed95f0fb5",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{kind}}",
+              "name": "A",
+              "query": "max by (kind) ({__name__=\"rekordo.storage.objects\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Objects by image kind",
+        "yAxisUnit": "none"
       }
     ]
   },
