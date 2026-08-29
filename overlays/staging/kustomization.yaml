@@ -19,7 +19,9 @@ configMapGenerator:
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-staging
   - MC_ENVIRONMENT=staging
-  - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,prometheus,beans,conditions
+  # StepMeterRegistry says "publishing metrics ..." at DEBUG on every step, so this
+  # distinguishes a registry that is failing from one that was never created at all.
+  - LOGGING_LEVEL_IO_MICROMETER=DEBUG
   - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging
   - MC_PUBLIC_URL=https://rekordo-staging.jannekeipert.de
   name: music-collector-backend-config
