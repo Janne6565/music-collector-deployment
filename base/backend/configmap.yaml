@@ -18,29 +18,29 @@ data:
   # proxy, so identify the deployment rather than the end user.
   MC_MUSICBRAINZ_USER_AGENT: "Rekordo/0.1 (https://github.com/Janne6565/rekordo-backend)"
   # --- Telemetry (SigNoz) -------------------------------------------------------------
-  # One agent, one pipeline. The OpenTelemetry Java agent produces the traces and, through
-  # its Micrometer bridge, also carries the meters the app registers -- http.server.requests,
-  # the JVM binders, and the rekordo.* collection gauges -- so they keep the names the other
-  # Spring services here already publish under.
+  # Two exporters with one destination, split by signal:
+  #   * spans from the OpenTelemetry Java agent baked into the image, over gRPC on 4317 --
+  #     that is what turns an outbound MusicBrainz or Discogs call into something visible;
+  #   * metrics from Micrometer's OTLP registry, over HTTP on 4318, so http.server.requests
+  #     and the rekordo.* collection gauges keep the names the other Spring services use.
   #
-  # Micrometer's own OTLP registry is deliberately not used. It cannot be combined with this:
-  # turning the agent's metric exporter off to avoid duplication also silences the Micrometer
-  # registry, because Boot's OpenTelemetry module reads the same OTEL_METRICS_EXPORTER. One
-  # or the other, and the agent is the one already required for traces.
+  # Deliberately no OTEL_METRICS_EXPORTER here. The agent and Boot's OpenTelemetry module
+  # both read it, so "none" -- meant only to stop the agent publishing a second copy of
+  # every JVM metric -- also silences the registry carrying this app's own meters, and
+  # nothing reports that it has. The agent is told to stay out of metrics by the
+  # otel.metrics.exporter system property in the Dockerfile instead, which Boot does not
+  # read.
   OTEL_SERVICE_NAME: rekordo-backend
   OTEL_TRACES_EXPORTER: otlp
-  OTEL_METRICS_EXPORTER: otlp
   OTEL_LOGS_EXPORTER: none
-  OTEL_INSTRUMENTATION_MICROMETER_ENABLED: "true"
-  # The agent's own JVM metrics would otherwise land beside Micrometer's under the very same
-  # names -- jvm.memory.used twice, from two sources, with different attributes.
-  OTEL_INSTRUMENTATION_RUNTIME_TELEMETRY_ENABLED: "false"
   # The agent defaults to http/protobuf, so the protocol has to be said out loud or it
   # speaks HTTP at the gRPC port: the collector resets the connection, the agent logs a
-  # failed export every few seconds, and nothing arrives. It warns about the port at
+  # failed export every few seconds, and no span arrives. It warns about the port once at
   # startup and then carries on, so nothing looks broken from the outside.
   OTEL_EXPORTER_OTLP_PROTOCOL: grpc
   OTEL_EXPORTER_OTLP_ENDPOINT: http://signoz-otel-collector.observability.svc.cluster.local:4317
+  MC_OTLP_METRICS_ENABLED: "true"
+  MC_OTLP_METRICS_URL: http://signoz-otel-collector.observability.svc.cluster.local:4318/v1/metrics
   # A single node with one replica: sampling would only make a quiet service harder to
-  # debug, and the whole traffic of this app is a rounding error next to the k8s metrics.
+  # debug, and this app's whole traffic is a rounding error beside the k8s metrics.
   OTEL_TRACES_SAMPLER: always_on
