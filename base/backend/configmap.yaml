@@ -17,3 +17,23 @@ data:
   # MusicBrainz requires a descriptive, contactable User-Agent. Anonymous callers hit this
   # proxy, so identify the deployment rather than the end user.
   MC_MUSICBRAINZ_USER_AGENT: "Rekordo/0.1 (https://github.com/Janne6565/rekordo-backend)"
+  # --- Telemetry (SigNoz) -------------------------------------------------------------
+  # Two exporters with one destination, deliberately split by signal:
+  #   * traces come from the OpenTelemetry Java agent baked into the image, which is what
+  #     turns an outbound MusicBrainz or Discogs call into something you can see;
+  #   * metrics come from Micrometer's OTLP registry, so http.server.requests and the
+  #     rekordo.* collection gauges keep the names the other Spring services use here.
+  # Letting the agent do metrics as well would publish two of everything under two
+  # different naming schemes, so it is switched off.
+  OTEL_SERVICE_NAME: rekordo-backend
+  OTEL_TRACES_EXPORTER: otlp
+  OTEL_METRICS_EXPORTER: none
+  OTEL_LOGS_EXPORTER: none
+  # gRPC, and the bare host:port form is correct for 4317. Only the OTLP-*HTTP* exporter
+  # needs the scheme, which is the next line and a different port.
+  OTEL_EXPORTER_OTLP_ENDPOINT: http://signoz-otel-collector.observability.svc.cluster.local:4317
+  MC_OTLP_METRICS_ENABLED: "true"
+  MC_OTLP_METRICS_URL: http://signoz-otel-collector.observability.svc.cluster.local:4318/v1/metrics
+  # A single node with one replica: sampling would only make a quiet service harder to
+  # debug, and the whole traffic of this app is a rounding error next to the k8s metrics.
+  OTEL_TRACES_SAMPLER: always_on

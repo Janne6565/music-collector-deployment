@@ -17,6 +17,8 @@ configMapGenerator:
 - behavior: merge
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-prod
+  - MC_ENVIRONMENT=prod
+  - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=prod
   - MC_PUBLIC_URL=https://rekordo.jannekeipert.de
   name: music-collector-backend-config
 
