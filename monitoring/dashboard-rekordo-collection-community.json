@@ -1,0 +1,1250 @@
+{
+  "data": {
+    "description": "What is actually in Rekordo: who signed up, what they collect, what they are hunting for. Read from the database every five minutes, so these move in steps rather than continuously. Deleted records are excluded everywhere.",
+    "layout": [
+      {
+        "h": 3,
+        "i": "1",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "2",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 2,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "3",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 4,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "4",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 6,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "5",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 8,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "6",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 10,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "7",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 0,
+        "y": 3
+      },
+      {
+        "h": 3,
+        "i": "8",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 2,
+        "y": 3
+      },
+      {
+        "h": 3,
+        "i": "9",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 4,
+        "y": 3
+      },
+      {
+        "h": 3,
+        "i": "10",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 6,
+        "y": 3
+      },
+      {
+        "h": 3,
+        "i": "11",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 8,
+        "y": 3
+      },
+      {
+        "h": 3,
+        "i": "12",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 10,
+        "y": 3
+      },
+      {
+        "h": 5,
+        "i": "13",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 6
+      },
+      {
+        "h": 5,
+        "i": "14",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 6
+      },
+      {
+        "h": 5,
+        "i": "15",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 11
+      },
+      {
+        "h": 5,
+        "i": "16",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 11
+      },
+      {
+        "h": 5,
+        "i": "17",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 16
+      },
+      {
+        "h": 5,
+        "i": "18",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 16
+      },
+      {
+        "h": 5,
+        "i": "19",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 21
+      },
+      {
+        "h": 5,
+        "i": "20",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 21
+      }
+    ],
+    "panelMap": {},
+    "tags": [
+      "rekordo",
+      "product"
+    ],
+    "title": "Rekordo \u2014 Collection & Community",
+    "variables": {
+      "env": {
+        "customValue": "prod,staging",
+        "description": "Which deployment these numbers describe.",
+        "id": "c5084a53-4055-489f-8a24-af3664f42755",
+        "key": "651afa6a-bd1f-484e-b575-fbd2f055d8d6",
+        "modificationUUID": "7d8ec258-2b77-4ba0-8ed4-98c6b7ae7527",
+        "multiSelect": false,
+        "name": "env",
+        "order": 0,
+        "selectedValue": "prod",
+        "showALLOption": false,
+        "sort": "DISABLED",
+        "textboxValue": "",
+        "type": "CUSTOM"
+      }
+    },
+    "version": "v5",
+    "widgets": [
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Every registered account, verified or not.",
+        "fillSpans": false,
+        "id": "1",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "ea2f522e-b67c-49f7-ba41-3e299b9b0ed2",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.users.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Accounts",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Accounts that have confirmed their address.",
+        "fillSpans": false,
+        "id": "2",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "d737f393-37bc-479f-a1a1-01f79f869a0b",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.users.verified\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Verified",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Accounts holding at least one record. The rest have signed up and not started.",
+        "fillSpans": false,
+        "id": "3",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "8a6ceb64-549d-451f-b6d1-760e0442b795",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.users.collecting\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Collectors",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Accounts with a handle, so their shelf can be linked to.",
+        "fillSpans": false,
+        "id": "4",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "db5e9a5c-5642-4fb5-84a1-966385b8b3a3",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.users.with_handle\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Public profiles",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Copies across every collection, tombstones excluded.",
+        "fillSpans": false,
+        "id": "5",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "272856b1-3fa0-4423-a7d1-aeda376d7ba8",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.copies.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Records",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "6",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "a7654c73-d7f6-493b-b25a-9fb68c33776c",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.wishlist.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Wishlist entries",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Records divided by the people who own at least one, not by all accounts -- an average over everybody would fall every time somebody signs up and stops.",
+        "fillSpans": false,
+        "id": "7",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "3c7a431d-bc8f-48ad-9156-03018757d751",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.copies.per_collector\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Records per collector",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "8",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "cf809b9d-8ca7-40e8-a709-ce02bda98581",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.wishlist.per_collector\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Wishes per collector",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "9",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "6b9207b7-4e6f-44ac-9bed-b7e1ddaf5a13",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.users.signups.7d\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Sign-ups, 7 days",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "10",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "61d39177-d26d-466d-be5b-84b131d126df",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.copies.added.1d\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Records added, 24h",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Releases the shared mirror can describe. Every device draws its shelf from these.",
+        "fillSpans": false,
+        "id": "11",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "1f595d9d-c60a-4ec2-9a19-0d44c97b1f18",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.catalogue.releases\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Catalogue entries",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "12",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "534da83f-8d74-4212-825a-e8bce97bab91",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.photos.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Photos",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "The gap between the lines is the funnel: signed up, confirmed, actually started.",
+        "fillSpans": false,
+        "id": "13",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "70b64dca-b42b-4a4a-b64d-bbb12cc14ed0",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "all accounts",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.users.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "verified",
+              "name": "B",
+              "query": "max({__name__=\"rekordo.users.verified\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "collecting",
+              "name": "C",
+              "query": "max({__name__=\"rekordo.users.collecting\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Accounts over time",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "14",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "e5e291f5-6ee6-462c-a72c-29f21663d508",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "records",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.copies.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "wishlist",
+              "name": "B",
+              "query": "max({__name__=\"rekordo.wishlist.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Collection size over time",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Both are rolling 24-hour counts read every five minutes, not daily buckets.",
+        "fillSpans": false,
+        "id": "15",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "d6c19a83-c8a1-4e8c-a989-05a670be1618",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "records",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.copies.added.1d\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "sign-ups",
+              "name": "B",
+              "query": "max({__name__=\"rekordo.users.signups.1d\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Added per day",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "How much of the collection anybody has bothered to rate.",
+        "fillSpans": false,
+        "id": "16",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "25196937-abd8-4fe3-94e4-ff903e0109f3",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "rated",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.copies.rated\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "all records",
+              "name": "B",
+              "query": "max({__name__=\"rekordo.copies.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Rated records",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "A pending count that only grows is requests nobody is answering.",
+        "fillSpans": false,
+        "id": "17",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "7b0e042a-3a25-4df4-a39b-5bec7e0e1dd5",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "accepted",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.friendships.accepted\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "pending",
+              "name": "B",
+              "query": "max({__name__=\"rekordo.friendships.pending\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Friends",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Bytes held in object storage for sleeve photos.",
+        "fillSpans": false,
+        "id": "18",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "8b4b634a-9382-4a26-8bea-012ecbde61f4",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.photos.bytes\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Photo storage",
+        "yAxisUnit": "bytes"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Grows when somebody adds a record the mirror has never seen.",
+        "fillSpans": false,
+        "id": "19",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "2aeccb7a-49d7-4beb-b0e1-8b23929e5ef0",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.catalogue.releases\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Catalogue growth",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "20",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "5b1f2df8-e0af-40be-a141-35c135d38ab6",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"rekordo.push.devices\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Devices registered for push",
+        "yAxisUnit": ""
+      }
+    ]
+  },
+  "uuid": "01a04d70-0719-7726-be1e-7eaed8384c77"
+}

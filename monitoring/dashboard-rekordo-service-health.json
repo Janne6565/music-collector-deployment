@@ -1,0 +1,1287 @@
+{
+  "data": {
+    "description": "Whether Rekordo is working and where it is slow. Traces for the same service live under APM; this is the metric view. The sync panels are first on purpose: a push that fails is invisible to the person it happens to, so this is the only place it shows.",
+    "layout": [
+      {
+        "h": 3,
+        "i": "1",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "2",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 2,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "3",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 4,
+        "y": 0
+      },
+      {
+        "h": 3,
+        "i": "4",
+        "moved": false,
+        "static": false,
+        "w": 2,
+        "x": 6,
+        "y": 0
+      },
+      {
+        "h": 5,
+        "i": "5",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 5
+      },
+      {
+        "h": 5,
+        "i": "6",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 5
+      },
+      {
+        "h": 5,
+        "i": "7",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 10
+      },
+      {
+        "h": 5,
+        "i": "8",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 10
+      },
+      {
+        "h": 5,
+        "i": "9",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 15
+      },
+      {
+        "h": 5,
+        "i": "10",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 15
+      },
+      {
+        "h": 5,
+        "i": "11",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 20
+      },
+      {
+        "h": 5,
+        "i": "12",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 20
+      },
+      {
+        "h": 5,
+        "i": "13",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 25
+      },
+      {
+        "h": 5,
+        "i": "14",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 25
+      },
+      {
+        "h": 5,
+        "i": "15",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 30
+      },
+      {
+        "h": 5,
+        "i": "16",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 30
+      },
+      {
+        "h": 5,
+        "i": "17",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 35
+      },
+      {
+        "h": 5,
+        "i": "18",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 35
+      },
+      {
+        "h": 5,
+        "i": "19",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
+        "y": 40
+      },
+      {
+        "h": 5,
+        "i": "20",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 6,
+        "y": 40
+      }
+    ],
+    "panelMap": {},
+    "tags": [
+      "rekordo",
+      "technical"
+    ],
+    "title": "Rekordo \u2014 Service Health",
+    "variables": {
+      "env": {
+        "customValue": "prod,staging",
+        "description": "Which deployment these numbers describe.",
+        "id": "3e6ca666-1d6c-45ce-b939-a9a18b35b70a",
+        "key": "586e73bb-ed1e-4900-894a-0b15f45e3f26",
+        "modificationUUID": "521a48ba-b448-4273-940e-d46b411cc355",
+        "multiSelect": false,
+        "name": "env",
+        "order": 0,
+        "selectedValue": "prod",
+        "showALLOption": false,
+        "sort": "DISABLED",
+        "textboxValue": "",
+        "type": "CUSTOM"
+      }
+    },
+    "version": "v5",
+    "widgets": [
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Seconds since the process started. A number that keeps resetting is a crashloop.",
+        "fillSpans": false,
+        "id": "1",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "73029f59-e858-485f-8682-f666c194c702",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"process.uptime\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Uptime",
+        "yAxisUnit": "s"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "2",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "3c5cc653-5816-49c7-bd13-ca8260dea274",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m]))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Requests / sec",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Any sustained value here is a bug somebody is hitting right now. `or vector(0)` so a healthy service reads zero instead of an empty panel.",
+        "fillSpans": false,
+        "id": "3",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "ba41ff7b-2b51-47d6-b51e-7dc1ecb80105",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.response.status_code\"=~\"5..\"}[5m])) or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "5xx / sec",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Records a push threw away because they cannot be stored. Silent by nature: the client is told the push succeeded, so nothing else anywhere reports it. This is the panel that would have shown the wishlist bug the day it started.",
+        "fillSpans": false,
+        "id": "4",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "value",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "cdcd4c71-6021-4f33-80ed-d3fc272390dd",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "sum(rate({__name__=\"rekordo.sync.push.dropped\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])) * 60 or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [
+          {
+            "index": "t-ok",
+            "keyIndex": 0,
+            "thresholdColor": "#22c55e",
+            "thresholdFormat": "Background",
+            "thresholdLabel": "OK",
+            "thresholdOperator": "<=",
+            "thresholdUnit": "",
+            "thresholdValue": 0
+          },
+          {
+            "index": "t-bad",
+            "keyIndex": 1,
+            "thresholdColor": "#ef4444",
+            "thresholdFormat": "Background",
+            "thresholdLabel": "DROPPING",
+            "thresholdOperator": ">",
+            "thresholdUnit": "",
+            "thresholdValue": 0
+          }
+        ],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Sync records dropped / min",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Health probes are in here too, which is why the floor is never zero.",
+        "fillSpans": false,
+        "id": "5",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "fd5b5a73-5383-44a8-93ce-a17f4f1ba386",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{http.response.status_code}}",
+              "name": "A",
+              "query": "sum by (\"http.response.status_code\") (rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m]))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Request rate by status",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "6",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "e8b0bc1d-ffe7-437e-8a6b-0d63fcb4f8fe",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "p50",
+              "name": "A",
+              "query": "histogram_quantile(0.50, sum(rate({__name__=\"http.server.request.duration.bucket\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])) by (le))"
+            },
+            {
+              "disabled": false,
+              "legend": "p95",
+              "name": "B",
+              "query": "histogram_quantile(0.95, sum(rate({__name__=\"http.server.request.duration.bucket\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])) by (le))"
+            },
+            {
+              "disabled": false,
+              "legend": "p99",
+              "name": "C",
+              "query": "histogram_quantile(0.99, sum(rate({__name__=\"http.server.request.duration.bucket\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])) by (le))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Latency percentiles",
+        "yAxisUnit": "s"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Grouped by route template, so an id in the path does not become its own line.",
+        "fillSpans": false,
+        "id": "7",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "5518caa5-b48d-43a8-84ea-a4c69cb71982",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{http.route}}",
+              "name": "A",
+              "query": "histogram_quantile(0.95, sum by (le, \"http.route\") (rate({__name__=\"http.server.request.duration.bucket\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "p95 by route",
+        "yAxisUnit": "s"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "8",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "5ef9bd8a-bf5b-4ac5-8a37-55c13bf31cf4",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{http.route}} {{http.response.status_code}}",
+              "name": "A",
+              "query": "sum by (\"http.route\", \"http.response.status_code\") (rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.response.status_code\"=~\"4..|5..\"}[5m]))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Errors by route",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "The endpoint every device depends on. Split by method rather than by path -- the agent reports the controller's route, so push and pull share one http.route and POST against GET is what tells them apart. A 5xx line above zero means somebody's collection has stopped replicating and their app is not telling them.",
+        "fillSpans": false,
+        "id": "9",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "4f6aca45-2185-42de-8101-41814d9b906f",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "push",
+              "name": "A",
+              "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.route\"=\"/api/v1/sync\", \"http.request.method\"=\"POST\"}[5m])) or vector(0)"
+            },
+            {
+              "disabled": false,
+              "legend": "pull",
+              "name": "B",
+              "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.route\"=\"/api/v1/sync\", \"http.request.method\"=\"GET\"}[5m])) or vector(0)"
+            },
+            {
+              "disabled": false,
+              "legend": "5xx",
+              "name": "C",
+              "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.route\"=\"/api/v1/sync\", \"http.response.status_code\"=~\"5..\"}[5m])) or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Sync: pushes, pulls and failures",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Registered at zero on startup, so a flat line is a working service rather than a broken panel.",
+        "fillSpans": false,
+        "id": "10",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "c597f482-cdaa-4e78-931f-d21b5baf4575",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{kind}} / {{reason}}",
+              "name": "A",
+              "query": "sum by (kind, reason) (rate({__name__=\"rekordo.sync.push.dropped\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])) * 60 or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Records dropped by kind and reason",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "MusicBrainz, Discogs and the Cover Art Archive. MusicBrainz allows one request a second and Discogs twenty-five a minute, so these lines have hard ceilings.",
+        "fillSpans": false,
+        "id": "11",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "b89ae742-5949-4533-9953-daf250b29ba8",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{server.address}}",
+              "name": "A",
+              "query": "sum by (\"server.address\") (rate({__name__=\"http.client.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m]))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "External API calls / sec",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "429 here is rate limiting, and it is the expected failure -- 5xx is theirs, 4xx otherwise is usually ours.",
+        "fillSpans": false,
+        "id": "12",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "c55e470b-1614-4eb0-99b7-ddb8a78a633b",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{server.address}} {{http.response.status_code}}",
+              "name": "A",
+              "query": "sum by (\"server.address\", \"http.response.status_code\") (rate({__name__=\"http.client.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.response.status_code\"=~\"4..|5..\"}[5m])) or vector(0)"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "External API failures / sec",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "13",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "9e0d7bbd-7bac-44f7-96e8-25cf576a86fd",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{server.address}}",
+              "name": "A",
+              "query": "histogram_quantile(0.95, sum by (le, \"server.address\") (rate({__name__=\"http.client.request.duration.bucket\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "External API p95 latency",
+        "yAxisUnit": "s"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "14",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "fb3c94aa-a5c9-4cd2-81f6-01458256aac6",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{jvm.memory.pool.name}}",
+              "name": "A",
+              "query": "sum by (\"jvm.memory.pool.name\") ({__name__=\"jvm.memory.used\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Heap used",
+        "yAxisUnit": "bytes"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Seconds spent paused per second of wall clock.",
+        "fillSpans": false,
+        "id": "15",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "9a101a7f-42e2-459f-aec5-e8e16eff03fd",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "gc",
+              "name": "A",
+              "query": "sum(rate({__name__=\"jvm.gc.pause.sum\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m]))"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "GC pause time",
+        "yAxisUnit": "s"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "16",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "d3fdf093-a86a-4013-bf95-4591f914f66e",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": "max({__name__=\"jvm.threads.live\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Threads",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "Active pressed against max is where the sync endpoint starts queueing.",
+        "fillSpans": false,
+        "id": "17",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "cd6cf280-2e2b-458e-bd43-3569e497cd8b",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "active",
+              "name": "A",
+              "query": "max({__name__=\"jdbc.connections.active\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "idle",
+              "name": "B",
+              "query": "max({__name__=\"jdbc.connections.idle\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            },
+            {
+              "disabled": false,
+              "legend": "max",
+              "name": "C",
+              "query": "max({__name__=\"jdbc.connections.max\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Database connections",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "From the cluster agents rather than the app, so this keeps reporting even when the app itself is too broken to say anything.",
+        "fillSpans": false,
+        "id": "18",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "cf3a06b5-e93b-45d2-8d6b-0e6d1be40ec6",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{k8s.pod.name}}",
+              "name": "A",
+              "query": "sum by (\"k8s.pod.name\") ({__name__=\"k8s.pod.cpu.usage\", \"k8s.namespace.name\"=\"music-collector-$env\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Container CPU",
+        "yAxisUnit": ""
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "",
+        "fillSpans": false,
+        "id": "19",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "graph",
+        "query": {
+          "builder": {
+            "queryData": [],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "2eeb19fb-92b0-4588-ac0c-18e532b1a64d",
+          "promql": [
+            {
+              "disabled": false,
+              "legend": "{{k8s.pod.name}}",
+              "name": "A",
+              "query": "sum by (\"k8s.pod.name\") ({__name__=\"k8s.pod.memory.working_set\", \"k8s.namespace.name\"=\"music-collector-$env\"})"
+            }
+          ],
+          "queryType": "promql"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Container memory",
+        "yAxisUnit": "bytes"
+      },
+      {
+        "bucketCount": 30,
+        "bucketWidth": 0,
+        "columnUnits": {},
+        "description": "The backend and the frontend pod both. Read this alongside the drop counter: the counter says how many, these lines say which and why.",
+        "fillSpans": false,
+        "id": "20",
+        "isStacked": false,
+        "mergeAllActiveQueries": false,
+        "nullZeroValues": "zero",
+        "opacity": "1",
+        "panelTypes": "list",
+        "query": {
+          "builder": {
+            "queryData": [
+              {
+                "dataSource": "logs",
+                "disabled": false,
+                "expression": "A",
+                "filter": {
+                  "expression": "k8s.namespace.name = 'music-collector-$env' AND (body LIKE '%ERROR%' OR body LIKE '%WARN%')"
+                },
+                "groupBy": [],
+                "having": {
+                  "expression": ""
+                },
+                "legend": "",
+                "limit": null,
+                "orderBy": [
+                  {
+                    "columnName": "timestamp",
+                    "order": "desc"
+                  }
+                ],
+                "queryName": "A",
+                "stepInterval": 60
+              }
+            ],
+            "queryFormulas": []
+          },
+          "clickhouse_sql": [],
+          "id": "f3768d1a-42ec-4fb6-ac10-3be3c85813f1",
+          "promql": [],
+          "queryType": "builder"
+        },
+        "selectedLogFields": [
+          {
+            "dataType": "string",
+            "name": "body",
+            "type": ""
+          },
+          {
+            "dataType": "string",
+            "name": "timestamp",
+            "type": ""
+          }
+        ],
+        "selectedTracesFields": [],
+        "softMax": 0,
+        "softMin": 0,
+        "stackedBarChart": false,
+        "thresholds": [],
+        "timePreferance": "GLOBAL_TIME",
+        "title": "Errors and warnings",
+        "yAxisUnit": ""
+      }
+    ]
+  },
+  "uuid": "01a04d72-57a2-7a6b-a825-415866d65ebc"
+}
