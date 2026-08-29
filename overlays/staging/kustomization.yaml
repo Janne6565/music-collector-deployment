@@ -14,13 +14,13 @@ resources:
   # the provider has registered, and password-reset links point at it — the
   # application.yml default is localhost, which would silently break both.
   # Staging only, and temporary: working out why a meter registry is not exporting.
+  # StepMeterRegistry says "publishing metrics ..." at DEBUG on every step, so this
+  # distinguishes a registry that is failing from one that was never created at all.
 configMapGenerator:
 - behavior: merge
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-staging
   - MC_ENVIRONMENT=staging
-  # StepMeterRegistry says "publishing metrics ..." at DEBUG on every step, so this
-  # distinguishes a registry that is failing from one that was never created at all.
   - LOGGING_LEVEL_IO_MICROMETER=DEBUG
   - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging
   - MC_PUBLIC_URL=https://rekordo-staging.jannekeipert.de
@@ -34,4 +34,4 @@ images:
 - name: ghcr.io/janne6565/rekordo-backend
   newTag: main-a299924
 - name: ghcr.io/janne6565/rekordo-frontend
-  newTag: main-349f861
+  newTag: main-5ffe583
