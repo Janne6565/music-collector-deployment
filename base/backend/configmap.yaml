@@ -29,8 +29,11 @@ data:
   OTEL_TRACES_EXPORTER: otlp
   OTEL_METRICS_EXPORTER: none
   OTEL_LOGS_EXPORTER: none
-  # gRPC, and the bare host:port form is correct for 4317. Only the OTLP-*HTTP* exporter
-  # needs the scheme, which is the next line and a different port.
+  # The agent defaults to http/protobuf, so the protocol has to be said out loud or it
+  # speaks HTTP at the gRPC port: the collector resets the connection, the agent logs a
+  # failed export every few seconds, and not one span arrives. It warns about the port at
+  # startup and then carries on, so nothing looks broken from the outside.
+  OTEL_EXPORTER_OTLP_PROTOCOL: grpc
   OTEL_EXPORTER_OTLP_ENDPOINT: http://signoz-otel-collector.observability.svc.cluster.local:4317
   MC_OTLP_METRICS_ENABLED: "true"
   MC_OTLP_METRICS_URL: http://signoz-otel-collector.observability.svc.cluster.local:4318/v1/metrics
