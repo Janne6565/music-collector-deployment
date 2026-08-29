@@ -13,15 +13,11 @@ resources:
   # The app's own origin. OAuth redirect URIs are built from it and must match what
   # the provider has registered, and password-reset links point at it — the
   # application.yml default is localhost, which would silently break both.
-  # Staging only, and temporary: working out why a meter registry is not exporting.
-  # StepMeterRegistry says "publishing metrics ..." at DEBUG on every step, so this
-  # distinguishes a registry that is failing from one that was never created at all.
 configMapGenerator:
 - behavior: merge
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-staging
   - MC_ENVIRONMENT=staging
-  - LOGGING_LEVEL_IO_MICROMETER=DEBUG
   - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging
   - MC_PUBLIC_URL=https://rekordo-staging.jannekeipert.de
   name: music-collector-backend-config
