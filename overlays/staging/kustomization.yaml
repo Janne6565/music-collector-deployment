@@ -18,6 +18,8 @@ configMapGenerator:
   literals:
   - MC_MINIO_BUCKET=music-collector-photos-staging
   - MC_ENVIRONMENT=staging
+  # Staging only, and temporary: working out why a meter registry is not exporting.
+  - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,info,prometheus,beans,conditions
   - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=staging
   - MC_PUBLIC_URL=https://rekordo-staging.jannekeipert.de
   name: music-collector-backend-config
