@@ -28,6 +28,6 @@ generatorOptions:
 
 images:
 - name: ghcr.io/janne6565/rekordo-backend
-  newTag: main-1fa1780
+  newTag: main-a86ca69
 - name: ghcr.io/janne6565/rekordo-frontend
   newTag: main-a66d1e0
