@@ -20,6 +20,7 @@ configMapGenerator:
   - MC_ENVIRONMENT=prod
   - OTEL_RESOURCE_ATTRIBUTES=deployment.environment=prod
   - MC_PUBLIC_URL=https://rekordo.jannekeipert.de
+  - MC_PUSH_ENABLED=true
   name: music-collector-backend-config
 
   # The deployment references the config map by its plain name.
