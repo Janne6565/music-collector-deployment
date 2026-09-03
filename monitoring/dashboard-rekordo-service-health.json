@@ -217,7 +217,7 @@
         "id": "1",
         "isStacked": false,
         "mergeAllActiveQueries": false,
-        "nullZeroValues": "zero",
+        "nullZeroValues": "empty",
         "opacity": "1",
         "panelTypes": "value",
         "query": {
@@ -267,7 +267,7 @@
         "id": "2",
         "isStacked": false,
         "mergeAllActiveQueries": false,
-        "nullZeroValues": "zero",
+        "nullZeroValues": "empty",
         "opacity": "1",
         "panelTypes": "value",
         "query": {
@@ -317,7 +317,7 @@
         "id": "3",
         "isStacked": false,
         "mergeAllActiveQueries": false,
-        "nullZeroValues": "zero",
+        "nullZeroValues": "empty",
         "opacity": "1",
         "panelTypes": "value",
         "query": {
@@ -367,7 +367,7 @@
         "id": "4",
         "isStacked": false,
         "mergeAllActiveQueries": false,
-        "nullZeroValues": "zero",
+        "nullZeroValues": "empty",
         "opacity": "1",
         "panelTypes": "value",
         "query": {
