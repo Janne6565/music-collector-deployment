@@ -292,7 +292,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Accounts",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -342,7 +342,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Verified",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -392,7 +392,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Collectors",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -442,7 +442,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Public profiles",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -492,7 +492,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Records",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -542,7 +542,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Wishlist entries",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -592,7 +592,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Records per collector",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -642,7 +642,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Wishes per collector",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -692,7 +692,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Sign-ups, 7 days",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -742,7 +742,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Records added, 24h",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -792,7 +792,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Catalogue entries",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -842,7 +842,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Photos",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,

@@ -35,6 +35,17 @@ A panel counting bad things ends in `or vector(0)` on purpose: without it a heal
 matches no series and the panel reads "no data", which looks identical to a panel that is
 broken.
 
+## Value panels need a unit, even when there isn't one
+
+A value panel left with an empty `yAxisUnit` renders any number of 1000 or more as
+**0**. Small numbers pass through, so the panel looks fine right up to the day it
+doesn't: "Catalogue entries" read 0 against 6841 rows in the database, while the
+"Catalogue growth" graph beside it drew the same series correctly.
+
+Set `"yAxisUnit": "none"` on unitless value panels. It is not the same as `""` --
+`none` selects the plain-number formatter, `""` selects nothing and the value is
+formatted away.
+
 ## Alert rules
 
 Not here — the rules live in `cluster-deployment/infrastructure/signoz-alerts/`, beside

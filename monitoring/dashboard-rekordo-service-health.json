@@ -306,7 +306,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "Requests / sec",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -356,7 +356,7 @@
         "thresholds": [],
         "timePreferance": "GLOBAL_TIME",
         "title": "5xx / sec",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
@@ -427,7 +427,7 @@
         ],
         "timePreferance": "GLOBAL_TIME",
         "title": "Sync records dropped / min",
-        "yAxisUnit": ""
+        "yAxisUnit": "none"
       },
       {
         "bucketCount": 30,
