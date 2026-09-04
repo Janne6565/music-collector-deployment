@@ -45,7 +45,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 5
+        "y": 3
       },
       {
         "h": 5,
@@ -54,7 +54,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 5
+        "y": 3
       },
       {
         "h": 5,
@@ -63,7 +63,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 10
+        "y": 8
       },
       {
         "h": 5,
@@ -72,7 +72,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 10
+        "y": 8
       },
       {
         "h": 5,
@@ -81,7 +81,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 15
+        "y": 13
       },
       {
         "h": 5,
@@ -90,7 +90,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 15
+        "y": 13
       },
       {
         "h": 5,
@@ -99,7 +99,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 20
+        "y": 18
       },
       {
         "h": 5,
@@ -108,7 +108,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 20
+        "y": 18
       },
       {
         "h": 5,
@@ -117,7 +117,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 25
+        "y": 23
       },
       {
         "h": 5,
@@ -126,7 +126,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 25
+        "y": 23
       },
       {
         "h": 5,
@@ -135,7 +135,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 30
+        "y": 28
       },
       {
         "h": 5,
@@ -144,7 +144,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 30
+        "y": 28
       },
       {
         "h": 5,
@@ -153,7 +153,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 35
+        "y": 33
       },
       {
         "h": 5,
@@ -162,7 +162,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 35
+        "y": 33
       },
       {
         "h": 5,
@@ -171,7 +171,7 @@
         "static": false,
         "w": 6,
         "x": 0,
-        "y": 40
+        "y": 38
       },
       {
         "h": 5,
@@ -180,7 +180,7 @@
         "static": false,
         "w": 6,
         "x": 6,
-        "y": 40
+        "y": 38
       }
     ],
     "panelMap": {},
@@ -212,30 +212,92 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Seconds since the process started. A number that keeps resetting is a crashloop.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "1",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
         "panelTypes": "value",
         "query": {
           "builder": {
-            "queryData": [],
-            "queryFormulas": []
+            "queryData": [
+              {
+                "aggregateAttribute": {
+                  "dataType": "",
+                  "id": "----",
+                  "key": "",
+                  "type": ""
+                },
+                "aggregateOperator": "count",
+                "aggregations": [
+                  {
+                    "metricName": "",
+                    "reduceTo": "avg",
+                    "spaceAggregation": "sum",
+                    "temporality": "",
+                    "timeAggregation": "avg"
+                  }
+                ],
+                "dataSource": "metrics",
+                "disabled": false,
+                "expression": "A",
+                "filter": {
+                  "expression": ""
+                },
+                "filters": {
+                  "items": [],
+                  "op": "AND"
+                },
+                "functions": [],
+                "groupBy": [],
+                "having": {
+                  "expression": ""
+                },
+                "legend": "",
+                "limit": null,
+                "orderBy": [],
+                "queryName": "A",
+                "reduceTo": "avg",
+                "source": "",
+                "spaceAggregation": "sum",
+                "stepInterval": null,
+                "timeAggregation": "rate"
+              }
+            ],
+            "queryFormulas": [],
+            "queryTraceOperator": []
           },
-          "clickhouse_sql": [],
-          "id": "73029f59-e858-485f-8682-f666c194c702",
+          "clickhouse_sql": [
+            {
+              "disabled": false,
+              "legend": "",
+              "name": "A",
+              "query": ""
+            }
+          ],
+          "id": "ed7fe837-27eb-4a98-9ab5-b8bb3547a16f",
           "promql": [
             {
               "disabled": false,
               "legend": "",
               "name": "A",
-              "query": "max({__name__=\"process.uptime\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
+              "query": "max({__name__=\"process.uptime\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}) / 1000"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "s"
         },
         "selectedLogFields": [
           {
@@ -250,11 +312,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Uptime",
         "yAxisUnit": "s"
       },
@@ -262,10 +326,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "2",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -285,7 +359,8 @@
               "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m]))"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -300,11 +375,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Requests / sec",
         "yAxisUnit": "none"
       },
@@ -312,10 +389,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Any sustained value here is a bug somebody is hitting right now. `or vector(0)` so a healthy service reads zero instead of an empty panel.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "3",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -335,7 +422,8 @@
               "query": "sum(rate({__name__=\"http.server.request.duration.count\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\", \"http.response.status_code\"=~\"5..\"}[5m])) or vector(0)"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -350,11 +438,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "5xx / sec",
         "yAxisUnit": "none"
       },
@@ -362,10 +452,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Records a push threw away because they cannot be stored. Silent by nature: the client is told the push succeeded, so nothing else anywhere reports it. This is the panel that would have shown the wishlist bug the day it started.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "4",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -385,7 +485,8 @@
               "query": "sum(rate({__name__=\"rekordo.sync.push.dropped\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}[5m])) * 60 or vector(0)"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -400,8 +501,10 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [
           {
@@ -425,7 +528,7 @@
             "thresholdValue": 0
           }
         ],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Sync records dropped / min",
         "yAxisUnit": "none"
       },

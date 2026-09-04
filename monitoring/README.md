@@ -46,6 +46,46 @@ Set `"yAxisUnit": "none"` on unitless value panels. It is not the same as `""` -
 `none` selects the plain-number formatter, `""` selects nothing and the value is
 formatted away.
 
+## A value panel reads the *start* of the window, not the end
+
+Every value panel here is a PromQL panel, and a PromQL value panel has no reduce
+operator: SigNoz evaluates the query across the dashboard's whole time range and
+the tile then shows the value at the **beginning** of it. For a gauge that grows
+-- accounts, records, catalogue entries -- that means the tile silently reports
+however far back the window reaches. "Accounts" read **2** on Last 7 days and
+**5** on Last 30 minutes against five real accounts; nothing about the panel says
+which one you are looking at.
+
+The fix is per-panel, not per-query: no PromQL can make a past timestamp know the
+present. Set **Panel Time Preference** (`timePreferance` in the JSON) to a short
+fixed window and the tile stops following the dashboard:
+
+    "timePreferance": "LAST_15_MIN"
+
+`LAST_15_MIN` for everything that is read from the database on the five-minute
+timer, `LAST_6_HR` for the two storage panels -- `StorageMetrics` walks the bucket
+**hourly**, so a fifteen-minute window contains no sample at all and their
+`or vector(0)` renders a confident 0 B.
+
+The reading lags by at most the panel's own window, which is the trade: a number
+that is fifteen minutes old on a screen, rather than a week old.
+
+**After a bulk edit the grid lies for a minute.** Several tiles read 0 straight
+after saving all eighteen, including ones that had been correct. Nothing was
+wrong with them -- the queries and the config were identical to the panels that
+worked, and a fresh load a few minutes later showed every one correctly. Do not
+chase it; reload before believing a zero.
+
+## `process.uptime` is milliseconds
+
+Micrometer documents seconds and publishes milliseconds. With `"yAxisUnit": "s"`
+the Uptime panel read **1.9 years** for a pod sixteen hours old -- and, before the
+window fix hid it, a plausible-looking **6.85 days**. The query divides by 1000:
+
+    max({__name__="process.uptime", ...}) / 1000
+
+The alert rules already accounted for this; the panel did not.
+
 ## Alert rules
 
 Not here — the rules live in `cluster-deployment/infrastructure/signoz-alerts/`, beside

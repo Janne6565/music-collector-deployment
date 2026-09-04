@@ -202,20 +202,20 @@
       },
       {
         "h": 5,
-        "i": "23",
-        "moved": false,
-        "static": false,
-        "w": 6,
-        "x": 0,
-        "y": 29
-      },
-      {
-        "h": 5,
         "i": "24",
         "moved": false,
         "static": false,
         "w": 6,
         "x": 6,
+        "y": 26
+      },
+      {
+        "h": 5,
+        "i": "23",
+        "moved": false,
+        "static": false,
+        "w": 6,
+        "x": 0,
         "y": 29
       }
     ],
@@ -224,9 +224,10 @@
       "rekordo",
       "product"
     ],
-    "title": "Rekordo — Collection & Community",
+    "title": "Rekordo \u2014 Collection & Community",
     "variables": {
       "env": {
+        "allSelected": false,
         "customValue": "prod,staging",
         "description": "Which deployment these numbers describe.",
         "id": "c5084a53-4055-489f-8a24-af3664f42755",
@@ -248,10 +249,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Every registered account, verified or not.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "1",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -271,7 +282,8 @@
               "query": "max({__name__=\"rekordo.users.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -286,11 +298,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Accounts",
         "yAxisUnit": "none"
       },
@@ -298,10 +312,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Accounts that have confirmed their address.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "2",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -321,7 +345,8 @@
               "query": "max({__name__=\"rekordo.users.verified\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -336,11 +361,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Verified",
         "yAxisUnit": "none"
       },
@@ -348,10 +375,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Accounts holding at least one record. The rest have signed up and not started.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "3",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -371,7 +408,8 @@
               "query": "max({__name__=\"rekordo.users.collecting\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -386,11 +424,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Collectors",
         "yAxisUnit": "none"
       },
@@ -398,10 +438,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Accounts with a handle, so their shelf can be linked to.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "4",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -421,7 +471,8 @@
               "query": "max({__name__=\"rekordo.users.with_handle\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -436,11 +487,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Public profiles",
         "yAxisUnit": "none"
       },
@@ -448,10 +501,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Copies across every collection, tombstones excluded.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "5",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -471,7 +534,8 @@
               "query": "max({__name__=\"rekordo.copies.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -486,11 +550,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Records",
         "yAxisUnit": "none"
       },
@@ -498,10 +564,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "6",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -521,7 +597,8 @@
               "query": "max({__name__=\"rekordo.wishlist.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -536,11 +613,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Wishlist entries",
         "yAxisUnit": "none"
       },
@@ -548,10 +627,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Records divided by the people who own at least one, not by all accounts -- an average over everybody would fall every time somebody signs up and stops.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "7",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -571,7 +660,8 @@
               "query": "max({__name__=\"rekordo.copies.per_collector\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -586,11 +676,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Records per collector",
         "yAxisUnit": "none"
       },
@@ -598,10 +690,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "8",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -621,7 +723,8 @@
               "query": "max({__name__=\"rekordo.wishlist.per_collector\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -636,11 +739,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Wishes per collector",
         "yAxisUnit": "none"
       },
@@ -648,10 +753,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "9",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -671,7 +786,8 @@
               "query": "max({__name__=\"rekordo.users.signups.7d\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -686,11 +802,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Sign-ups, 7 days",
         "yAxisUnit": "none"
       },
@@ -698,10 +816,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "10",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -721,7 +849,8 @@
               "query": "max({__name__=\"rekordo.copies.added.1d\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -736,11 +865,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Records added, 24h",
         "yAxisUnit": "none"
       },
@@ -748,10 +879,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Releases the shared mirror can describe. Every device draws its shelf from these.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "11",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -771,7 +912,8 @@
               "query": "max({__name__=\"rekordo.catalogue.releases\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -786,11 +928,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Catalogue entries",
         "yAxisUnit": "none"
       },
@@ -798,10 +942,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "12",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -821,7 +975,8 @@
               "query": "max({__name__=\"rekordo.photos.total\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "none"
         },
         "selectedLogFields": [
           {
@@ -836,11 +991,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_15_MIN",
         "title": "Photos",
         "yAxisUnit": "none"
       },
@@ -1284,10 +1441,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Bytes in the bucket right now, everything included.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "21",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -1307,7 +1474,8 @@
               "query": "sum(max by (kind) ({__name__=\"rekordo.storage.bytes\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"})) or vector(0)"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "bytes"
         },
         "selectedLogFields": [
           {
@@ -1322,11 +1490,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_6_HR",
         "title": "Image storage",
         "yAxisUnit": "bytes"
       },
@@ -1334,10 +1504,20 @@
         "bucketCount": 30,
         "bucketWidth": 0,
         "columnUnits": {},
+        "contextLinks": {
+          "linksData": []
+        },
+        "customLegendColors": {},
+        "decimalPrecision": 2,
         "description": "Bytes in the bucket that no live photo row claims. Deletes are best effort, so this is what they left behind. Should sit at zero.",
+        "fillMode": "none",
         "fillSpans": false,
         "id": "22",
+        "isLogScale": false,
         "isStacked": false,
+        "legendPosition": "bottom",
+        "lineInterpolation": "spline",
+        "lineStyle": "solid",
         "mergeAllActiveQueries": false,
         "nullZeroValues": "empty",
         "opacity": "1",
@@ -1357,7 +1537,8 @@
               "query": "max({__name__=\"rekordo.storage.orphan.bytes\", \"deployment.environment\"=\"$env\", \"service.name\"=\"rekordo-backend\"}) or vector(0)"
             }
           ],
-          "queryType": "promql"
+          "queryType": "promql",
+          "unit": "bytes"
         },
         "selectedLogFields": [
           {
@@ -1372,11 +1553,13 @@
           }
         ],
         "selectedTracesFields": [],
+        "showPoints": false,
         "softMax": 0,
         "softMin": 0,
+        "spanGaps": true,
         "stackedBarChart": false,
         "thresholds": [],
-        "timePreferance": "GLOBAL_TIME",
+        "timePreferance": "LAST_6_HR",
         "title": "Orphaned bytes",
         "yAxisUnit": "bytes"
       },
